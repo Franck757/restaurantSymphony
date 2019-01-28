@@ -1,0 +1,29 @@
+AppBundle\Entity\Cartecommande:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\CartecommandeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        quantity:
+            type: integer
+
+    manyToOne:
+        carteId:
+            targetEntity: Carte
+            joinColumn:
+                 name: carte_id
+                 referencedColumnName: id
+                 nullable: false
+        commandeId:
+            targetEntity: Commande
+            joinColumn:
+                 name: commande_id
+                 referencedColumnName: id
+                 nullable: false
+
+    lifecycleCallbacks: {  }
