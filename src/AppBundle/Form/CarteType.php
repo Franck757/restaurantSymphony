@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class CarteType extends AbstractType
 {
@@ -13,7 +14,13 @@ class CarteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('description')->add('image')->add('prix')->add('stock')->add('categorie');
+        $builder
+          ->add('nom')
+          ->add('description')
+          ->add('image', FileType::class, array('label' => 'Illustration'))
+          ->add('prix')
+          ->add('stock')
+          ->add('categorie');
     }/**
      * {@inheritdoc}
      */
@@ -31,6 +38,4 @@ class CarteType extends AbstractType
     {
         return 'appbundle_carte';
     }
-
-
 }

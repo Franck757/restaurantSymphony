@@ -13,3 +13,7 @@ app_user:
 app_role:
     resource: "@AppBundle/Resources/config/routing/role.yml"
     prefix:   /role
+
+app_categorie:
+    resource: "@AppBundle/Resources/config/routing/categorie.yml"
+    prefix:   /categorie

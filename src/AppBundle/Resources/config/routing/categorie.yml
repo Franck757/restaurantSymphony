@@ -1,24 +1,34 @@
-categorie_index:
+categorie_public_index:
     path:     /
+    defaults: { _controller: "AppBundle:Categorie:indexClient" }
+    methods:  GET
+
+categorie_public_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Categorie:showClient" }
+    methods:  GET
+
+categorie_index:
+    path:     /admin
     defaults: { _controller: "AppBundle:Categorie:index" }
     methods:  GET
 
 categorie_show:
-    path:     /{id}/show
+    path:     /admin/{id}/show
     defaults: { _controller: "AppBundle:Categorie:show" }
     methods:  GET
 
 categorie_new:
-    path:     /new
+    path:     /admin/new
     defaults: { _controller: "AppBundle:Categorie:new" }
     methods:  [GET, POST]
 
 categorie_edit:
-    path:     /{id}/edit
+    path:     /admin/{id}/edit
     defaults: { _controller: "AppBundle:Categorie:edit" }
     methods:  [GET, POST]
 
 categorie_delete:
-    path:     /{id}/delete
+    path:     /admin/{id}/delete
     defaults: { _controller: "AppBundle:Categorie:delete" }
     methods:  DELETE

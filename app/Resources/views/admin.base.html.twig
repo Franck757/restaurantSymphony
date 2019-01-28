@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="public">
+<html class="admin">
     <head>
       {% block header %}
         <meta charset="UTF-8" />
@@ -23,13 +23,14 @@
         {% endblock %}
     </head>
     <body>
-      <main>
+      <aside>
         <ul class="">
-            <li><a href="#">Voir le panier</a></li>
-            <li><a href="#">Validerma commande</a></li>
-            <li><a href="#">Voir la liste des plats</a></li>
-            <li><a href="#">Gérer mon profil</a></li>
+          <li><a href="{{ path('carte_index') }}">Nouveau plat</a></li>
+          <li><a href="{{ path('user_index') }}">Utilisateurs</a></li>
+          <li><a href="{{ path('role_index') }}">roles</a></li>
         </ul>
+      </aside>
+      <main>
         {% block body %}
         <h1>
           <img src="{{ asset('bundles/app/images/logo.gif') }}" height="63" width="57" alt="3WA Restaurant">Restaurant - Made In America !
@@ -37,13 +38,7 @@
         {% endblock %}
       </main>
     <footer>
-      {% block footer %}
-      <ul class="link-list">
-          <li><img src="{{ asset('bundles/app/images/payment/visa.png') }}" alt="Visa"></li>
-          <li><img src="{{ asset('bundles/app/images/payment/mastercard.png') }}" alt="MasterCard"></li>
-          <li><img src="{{ asset('bundles/app/images/payment/paypal.png') }}" alt="PayPal"></li>
-      </ul>
-      {% endblock %}
+
     </footer>
     {% block javascripts %}
     <script src="{{ asset('bundles/app/js/main.js') }}"></script>

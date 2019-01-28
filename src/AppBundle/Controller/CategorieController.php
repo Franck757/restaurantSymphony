@@ -27,6 +27,17 @@ class CategorieController extends Controller
         ));
     }
 
+    public function indexClientAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $categories = $em->getRepository('AppBundle:Categorie')->findAll();
+
+        return $this->render('categorie/public.index.html.twig', array(
+            'categories' => $categories,
+        ));
+    }
+
     /**
      * Creates a new categorie entity.
      *

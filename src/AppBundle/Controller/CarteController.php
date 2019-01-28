@@ -28,22 +28,51 @@ class CarteController extends Controller
     }
 
     /**
+     * Lists all carte entities.
+     *
+     */
+    public function indexClientAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $cartes = $em->getRepository('AppBundle:Carte')->findAll();
+
+        return $this->render('carte/public.index.html.twig', array(
+            'cartes' => $cartes,
+        ));
+    }
+
+    /**
      * Creates a new carte entity.
      *
      */
-    public function newAction(Request $request)
-    {
-        $carte = new Carte();
-        $form = $this->createForm('AppBundle\Form\CarteType', $carte);
-        $form->handleRequest($request);
+     public function newAction(Request $request)
+     {
+       $carte = new Carte();
+       $form = $this->createForm('AppBundle\Form\CarteType', $carte);
+       $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($carte);
-            $em->flush();
+       if ($form->isSubmitted() && $form->isValid()) {
+         $file = $carte->getImage();
 
-            return $this->redirectToRoute('carte_show', array('id' => $carte->getId()));
-        }
+         $fileName = $file->generateOriginalClientName();
+
+         // Move the file to the directory where brochures are stored
+         $file->move(
+           $this->getParameter('images_directory'),
+           $fileName
+         );
+
+         // Update the 'brochure' property to store the PDF file name
+         // instead of its contents
+         $carte->setImage($fileName);
+
+         $em = $this->getDoctrine()->getManager();
+         $em->persist($carte);
+         $em->flush();
+
+         return $this->redirectToRoute('carte_show', array('id' => $carte->getId()));
+       }
 
         return $this->render('carte/new.html.twig', array(
             'carte' => $carte,
