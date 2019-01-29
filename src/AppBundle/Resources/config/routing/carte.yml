@@ -1,3 +1,13 @@
+carte_panier_check:
+  path:     /panier/check
+  defaults: { _controller: "AppBundle:Carte:checkPanier" }
+  methods:  GET
+
+carte_panier_ajout:
+  path:     /panier/ajout/{id}
+  defaults: { _controller: "AppBundle:Carte:ajoutPanier" }
+  methods:  GET
+
 carte_public_index:
     path:     /
     defaults: { _controller: "AppBundle:Carte:indexClient" }

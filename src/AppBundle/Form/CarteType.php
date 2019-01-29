@@ -17,7 +17,7 @@ class CarteType extends AbstractType
         $builder
           ->add('nom')
           ->add('description')
-          ->add('image', FileType::class, array('label' => 'Illustration'))
+          ->add('image', FileType::class, array('label' => 'Illustration', 'data_class' => null))
           ->add('prix')
           ->add('stock')
           ->add('categorie');

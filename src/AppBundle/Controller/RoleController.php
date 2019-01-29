@@ -26,16 +26,7 @@ class RoleController extends Controller
             'roles' => $roles,
         ));
     }
-    public function indexClientAction()
-    {
-        $em = $this->getDoctrine()->getManager();
 
-        $roles = $em->getRepository('AppBundle:Role')->findAll();
-
-        return $this->render('role/public.index.html.twig', array(
-            'roles' => $roles,
-        ));
-    }
 
     /**
      * Creates a new role entity.

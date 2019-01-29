@@ -287,12 +287,17 @@ input {
 /* Admin */
 .admin
 {
-    background: url('../images/admin.jpg') repeat;
+    background: url('../images/admin.jpg') no-repeat center center fixed;
+    background-size: cover;
     overflow-y: scroll;
 }
 
 .public
 {
-  background: url('../images/public.jpeg') repeat;
+  background: url('../images/public.jpeg') no-repeat center center fixed;
   overflow-y: scroll;
+  background-size: cover;
+}
+td {
+  margin-left: 10px;
 }

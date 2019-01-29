@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Carte</h1>
+
+<table>
+  <tbody>
+    <tr>
+      <th>Id</th>
+      <td>{{ carte.id }}</td>
+    </tr>
+    <tr>
+      <th>Nom</th>
+      <td>{{ carte.nom }}</td>
+    </tr>
+    <tr>
+      <th>Description</th>
+      <td>{{ carte.description }}</td>
+    </tr>
+    <tr>
+      <th>Image</th>
+      <td><img src="{{ asset('bundles/app/images/' ~ carte.Image) }}" alt="menu"></td>
+    </tr>
+    <tr>
+      <th>Prix</th>
+      <td>{{ carte.prix }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<button class="panierDetails"><a href="{{ path('carte_panier_ajout', { 'id': carte.id })}}">Ajouter au panier</a></button>
+<a href="{{ path('carte_public_index') }}">Back to the list</a>
+
+{% endblock %}

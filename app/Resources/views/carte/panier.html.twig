@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>contenu panier</h1>
+
+    <table>
+        <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Description</th>
+              <th>Image</th>
+              <th>Prix</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for carte in cartes %}
+        <tr>
+            <td><a href="{{ path('carte_public_show', { 'id': carte.id }) }}">{{ carte.nom }}</a></td>
+            <td>{{ carte.description }}</td>
+            <td><img src="{{ asset('bundles/app/images/' ~ carte.Image) }}" alt="menu"></td>
+            <td>{{ carte.prix }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

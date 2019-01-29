@@ -2,28 +2,26 @@
 
 {% block body %}
     <h1>Cartes list</h1>
+    <h2><a href="{{ asset('http://localhost/restaurant/web/app_dev.php/choixCategorie/') }}"><em>Trier par catégorie</em></a></h2>
 
     <table>
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nom</th>
                 <th>Description</th>
                 <th>Image</th>
                 <th>Prix</th>
-                <th>Stock</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for carte in cartes %}
             <tr>
-                <td><a href="{{ path('carte_public_show', { 'id': carte.id }) }}">{{ carte.id }}</a></td>
-                <td>{{ carte.nom }}</td>
+                <td><a href="{{ path('carte_public_show', { 'id': carte.id }) }}">{{ carte.nom }}</a></td>
                 <td>{{ carte.description }}</td>
-                <td>{{ carte.image }}</td>
+                <td><img src="{{ asset('bundles/app/images/' ~ carte.Image) }}" alt="menu"></td>
                 <td>{{ carte.prix }}</td>
-                <td>{{ carte.stock }}</td>
+                <td><button class="panier"><a href="{{ path('carte_panier_ajout', { 'id': carte.id })}}">Ajouter au panier</a></button></td>
             </tr>
         {% endfor %}
         </tbody>

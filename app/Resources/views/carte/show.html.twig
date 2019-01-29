@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.base.html.twig' %}
 
 {% block body %}
     <h1>Carte</h1>
@@ -19,7 +19,7 @@
             </tr>
             <tr>
                 <th>Image</th>
-                <td>{{ carte.image }}</td>
+                <td><img src="{{ asset('bundles/app/images/' ~ carte.Image) }}" alt="menu"></td>
             </tr>
             <tr>
                 <th>Prix</th>

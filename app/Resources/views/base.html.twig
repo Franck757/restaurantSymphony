@@ -24,10 +24,10 @@
     </head>
     <body>
       <main>
-        <ul class="">
-            <li><a href="#">Voir le panier</a></li>
-            <li><a href="#">Validerma commande</a></li>
-            <li><a href="#">Voir la liste des plats</a></li>
+        <ul>
+            <li><a href="{{ path('carte_panier_check')}}">Voir le panier</a></li>
+            <li><a href="#">Valider ma commande</a></li>
+            <li><a href="{{ asset('http://localhost/restaurant/web/app_dev.php/carte/') }}">Voir la liste des plats</a></li>
             <li><a href="#">Gérer mon profil</a></li>
         </ul>
         {% block body %}

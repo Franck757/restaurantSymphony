@@ -55,7 +55,7 @@ class CarteController extends Controller
        if ($form->isSubmitted() && $form->isValid()) {
          $file = $carte->getImage();
 
-         $fileName = $file->generateOriginalClientName();
+         $fileName = $file->getClientOriginalName();
 
          // Move the file to the directory where brochures are stored
          $file->move(
@@ -93,6 +93,17 @@ class CarteController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
+    public function showClientAction(Carte $carte)
+    {
+        $deleteForm = $this->createDeleteForm($carte);
+
+        return $this->render('carte/public.show.html.twig', array(
+            'carte' => $carte,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
 
     /**
      * Displays a form to edit an existing carte entity.
@@ -149,5 +160,32 @@ class CarteController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    public function ajoutPanierAction($id)
+    {
+      $_SESSION['panier'][$id]=1;
+      return $this->redirectToRoute('carte_public_index');
+    }
+
+
+    public function checkPanierAction()
+    {
+      $em = $this->getDoctrine()->getManager();
+      $rep = $em->getRepository('AppBundle:Carte');
+
+      $panier = [];
+      foreach ($_SESSION['panier'] as $plat_id => $quantite) {
+        $panier[] = $rep->find($plat_id);
+      }
+      // $em
+      //   ->createQuery(“SELECT c FROM Carte c WHERE c.id IN (':ids')”)
+      //   ->setParameters([‘ids’ => array_keys($_SESSION['panier'])]);
+      //
+      // $panier = $query->getResult();
+      //
+      return $this->render('carte/panier.html.twig', array(
+          'cartes' => $panier
+      ));
     }
 }
