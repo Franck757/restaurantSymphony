@@ -4,7 +4,7 @@ user_public_index:
     methods:  GET
 
 user_public_show:
-    path:     //{id}/show
+    path:     /{id}/show
     defaults: { _controller: "AppBundle:User:showClient" }
     methods:  GET
 
@@ -32,3 +32,21 @@ user_delete:
     path:     /admin/{id}/delete
     defaults: { _controller: "AppBundle:User:delete" }
     methods:  DELETE
+
+user_login:
+    path: /login
+    defaults: { _controller: "AppBundle:User:login" }
+    methods: GET
+
+user_login_check:
+    path: /login_check
+    defaults: { _controller: "AppBundle:User:login" }
+
+user_logout:
+    path: /logout
+    defaults: { _controller: "AppBundle:User:login" }
+
+user_register:
+    path: /register
+    defaults: { _controller: "AppBundle:User:registerCheck" }
+    methods: POST

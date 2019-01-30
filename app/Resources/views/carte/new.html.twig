@@ -1,0 +1,14 @@
+{% extends 'admin.base.html.twig' %}
+
+{% block body %}
+   <h1>Carte creation</h1>
+
+   {{ form_start(form) }}
+       {{ form_widget(form) }}
+       <input type="submit" value="Create" />
+   {{ form_end(form) }}
+
+ <div class="lien">
+           <a href="{{ path('carte_index') }}">Back to the list</a>
+   </div>
+{% endblock %}

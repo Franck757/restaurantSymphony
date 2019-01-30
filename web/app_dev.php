@@ -2,6 +2,7 @@
 
 use Symfony\Component\Debug\Debug;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 // If you don't want to setup permissions the proper way, just uncomment the following PHP line
 // read https://symfony.com/doc/current/setup.html#checking-symfony-application-configuration-and-setup
@@ -26,6 +27,8 @@ if (PHP_VERSION_ID < 70000) {
     $kernel->loadClassCache();
 }
 $request = Request::createFromGlobals();
+// $session = new Session();
+// $session->start();
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);

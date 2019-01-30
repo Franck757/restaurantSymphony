@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Carte;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Carte controller.
@@ -164,6 +165,8 @@ class CarteController extends Controller
 
     public function ajoutPanierAction($id)
     {
+      // $session = new Session();
+      // $session->start();
       $_SESSION['panier'][$id]=1;
       return $this->redirectToRoute('carte_public_index');
     }
@@ -171,6 +174,8 @@ class CarteController extends Controller
 
     public function checkPanierAction()
     {
+      // $session = new Session();
+      // $session->start();
       $em = $this->getDoctrine()->getManager();
       $rep = $em->getRepository('AppBundle:Carte');
 
@@ -187,5 +192,14 @@ class CarteController extends Controller
       return $this->render('carte/panier.html.twig', array(
           'cartes' => $panier
       ));
+    }
+
+    public function cleanPanierAction()
+    {
+      // $em = $this->getDoctrine()->getManager();
+      // $rep = $em->getRepository('AppBundle:Carte');
+
+      $_SESSION['panier'] = [];
+      return $this->redirectToRoute('carte_panier_check');
     }
 }

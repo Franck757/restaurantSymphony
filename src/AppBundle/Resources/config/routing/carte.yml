@@ -1,3 +1,8 @@
+carte_panier_clean:
+  path:     /panier/clean
+  defaults: { _controller: "AppBundle:Carte:cleanPanier" }
+  methods:  GET
+
 carte_panier_check:
   path:     /panier/check
   defaults: { _controller: "AppBundle:Carte:checkPanier" }

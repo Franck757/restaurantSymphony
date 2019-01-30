@@ -15,7 +15,7 @@ a
 }
 a:hover
 {
-    color: #339966;
+    color: red;
 }
 
 body
@@ -300,4 +300,9 @@ input {
 }
 td {
   margin-left: 10px;
+}
+
+.fas {
+  margin: 15px;
+  color: red;
 }
